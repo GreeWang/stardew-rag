@@ -12,15 +12,23 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger(__name__)
 
 class ChunkEmbedder:
-    def __init__(self, model_name: str = "all-MiniLM-L6-v2"):
+    def __init__(self, model_name: str = "moka-ai/m3e-base"):
         """
         初始化嵌入模型。
 
         Args:
             model_name (str): 要使用的 sentence-transformers 模型名称。
+                支持的中文模型:
+                - "moka-ai/m3e-base": 中文文本嵌入模型
+                - "BAAI/bge-small-zh": 北京智源的中文小模型
+                - "BAAI/bge-base-zh": 北京智源的中文基础模型
+                支持的英文模型:
+                - "all-MiniLM-L6-v2": 轻量级英文模型
+                - "all-mpnet-base-v2": 高性能英文模型
         """
         logger.info(f"正在加载嵌入模型: {model_name}")
         self.model = SentenceTransformer(model_name)
+        self.model_name = model_name
         logger.info(f"模型 {model_name} 加载完成。")
 
     def embed_chunks(self, chunks_file_path: str, output_embeddings_path: str, output_metadata_path: str):
@@ -80,6 +88,12 @@ class ChunkEmbedder:
         Returns:
             np.ndarray: 嵌入向量。
         """
+        # 对于BGE模型，查询时需要添加指令
+        if "bge" in self.model_name.lower():
+            # BGE模型推荐在查询时添加指令
+            instruction = "为这个句子生成表示以用于检索相关文章："
+            text = instruction + text
+        
         return self.model.encode([text])[0] # 返回单个向量
 
 
@@ -90,9 +104,14 @@ if __name__ == "__main__":
     OUTPUT_METADATA_PATH = "C:\\Users\\Wong\\Desktop\\work\\stardew-rag-project\\data\\chunk_metadata.jsonl" # 保存元数据的路径
 
     # --- 选择模型 ---
-    # "all-MiniLM-L6-v2" 是一个轻量级、快速的模型，适合 CPU
-    # "all-mpnet-base-v2" 或 "bge-small-en-v1.5" (或中文 "bge-small-zh-v1.5") 性能可能更好但稍慢
-    EMBEDDING_MODEL_NAME = "all-MiniLM-L6-v2"
+    # 中文模型选项:
+    # "moka-ai/m3e-base" - 专门为中文优化的模型
+    # "BAAI/bge-small-zh" - 北京智源的中文小模型
+    # "BAAI/bge-base-zh" - 北京智源的中文基础模型
+    # 英文模型选项:
+    # "all-MiniLM-L6-v2" - 轻量级英文模型
+    # "all-mpnet-base-v2" - 高性能英文模型
+    EMBEDDING_MODEL_NAME = "moka-ai/m3e-base"
 
     # --- 执行嵌入 ---
     embedder = ChunkEmbedder(model_name=EMBEDDING_MODEL_NAME)

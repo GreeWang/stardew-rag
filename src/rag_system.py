@@ -60,7 +60,7 @@ class RAGSystem:
 
 if __name__ == "__main__":
     # === 路径 ===
-    BASE = "C:\\Users\\Wong\\Desktop\\work\\stardew-rag-project\\data"
+    BASE = "data"
 
     INPUT_JSON_PATH = f"{BASE}\\rag_docs.json"
     CHUNKS_PATH = f"{BASE}\\chunks.jsonl"
@@ -122,3 +122,6 @@ if __name__ == "__main__":
     test2 = "矿车怎么用？"
     print(f"\n问题: {test2}")
     print("回答:", rag.query(test2, top_k=3))
+
+    from interactive_interface import run_interactive_query
+    run_interactive_query(rag)
