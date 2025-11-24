@@ -1,0 +1,502 @@
+[
+  {
+    "id": 1,
+    "question": "友谊是什么？",
+    "true_answer": "玩家可以与鹈鹕镇的居民们成为朋友。随着你们的友情渐深，村民们的对玩家会显得更为友好，会出现被称为爱心事件的动画，村民还会在信件里赠送你礼物。 目录",
+    "true_sources": [
+      "友谊"
+    ],
+    "original_title": "友谊 - Stardew Valley Wiki",
+    "difficulty": "困难"
+  },
+  {
+    "id": 2,
+    "question": "File:Quality Bobber.png是什么？",
+    "true_answer": "Quality_Bobber.png &#8206;（48 × 48像素，文件大小：330字节，MIME类型：image/png） 文件 文件历史 文件用途 元数据 没有更高的分辨率。",
+    "true_sources": [
+      "File:Quality Bobber.png"
+    ],
+    "original_title": "File:Quality Bobber.png - Stardew Valley Wiki",
+    "difficulty": "困难"
+  },
+  {
+    "id": 3,
+    "question": "鹈鹕镇在哪里？",
+    "true_answer": "鹈鹕镇是游戏开始时玩家搬入的地点，它位于星露谷，大部分的居民都在此生活、工作和进行社交。",
+    "true_sources": [
+      "鹈鹕镇"
+    ],
+    "original_title": "鹈鹕镇 - Stardew Valley Wiki",
+    "difficulty": "中等"
+  },
+  {
+    "id": 4,
+    "question": "硬木围栏是什么？",
+    "true_answer": "硬木围栏是一件可打造物品，可以让玩家在农场中隔开某些区域。硬木围栏是游戏中最坚固的围栏，可以维持完好状态502~505天。可以用100（1,000金）在赌场中购买到硬木围栏。 硬木围栏 一种最耐用的围栏。 信息 来源 打造 • 赌场 售出价格 10金 打造 配方来源 耕种 （等级6） 所需材料 硬木 （1）",
+    "true_sources": [
+      "硬木围栏"
+    ],
+    "original_title": "硬木围栏 - 星露谷物语官方中文维基",
+    "difficulty": "简单"
+  },
+  {
+    "id": 5,
+    "question": "有关养猪你能告诉我什么？",
+    "true_answer": "猪是一种在高级畜棚中饲养的动物，可在玛妮的牧场中购买，价格为16,000金。猪能够怀孕并产下小猪。 猪 这些猪在寻找松露方面训练有素！饲养在畜棚里。 信息 建筑 高级畜棚 购买价格 16,000金 产物 松露",
+    "true_sources": [
+      "猪"
+    ],
+    "original_title": "猪 - 星露谷物语官方中文维基",
+    "difficulty": "简单"
+  },
+  {
+    "id": 6,
+    "question": "File:Peach.png是什么？",
+    "true_answer": "Peach.png &#8206;（48 × 48像素，文件大小：529字节，MIME类型：image/png） 文件 文件历史 文件用途 元数据 没有更高的分辨率。",
+    "true_sources": [
+      "File:Peach.png"
+    ],
+    "original_title": "File:Peach.png - Stardew Valley Wiki",
+    "difficulty": "简单"
+  },
+  {
+    "id": 7,
+    "question": "咖啡机有什么用？",
+    "true_answer": "咖啡机每天早晨会自动提供一杯咖啡。玩家在完成特别任务“给乔治的礼物”后，艾芙琳会邮寄一个咖啡机给玩家。 咖啡机 每天早上自动煮一杯新鲜的咖啡。 信息 来源 艾芙琳 （特别任务） 售出价格 不可出售",
+    "true_sources": [
+      "咖啡机"
+    ],
+    "original_title": "咖啡机 - 星露谷物语官方中文维基",
+    "difficulty": "困难"
+  },
+  {
+    "id": 8,
+    "question": "File:StormAnimated.gif是什么？",
+    "true_answer": "StormAnimated.gif &#8206;（45 × 45像素，文件大小：852字节，MIME类型：image/gif、循环、4帧、0.6秒） 文件 文件历史 文件用途 没有更高的分辨率。",
+    "true_sources": [
+      "File:StormAnimated.gif"
+    ],
+    "original_title": "File:StormAnimated.gif - Stardew Valley Wiki",
+    "difficulty": "困难"
+  },
+  {
+    "id": 9,
+    "question": "苹果树是什么？",
+    "true_answer": "苹果树是一种果树，由苹果树苗生长28天成熟。成熟的苹果树在星露谷农场的秋季每天都会产出一个苹果，种植在温室和姜岛中时全年结果。 苹果树",
+    "true_sources": [
+      "苹果树"
+    ],
+    "original_title": "苹果树 - 星露谷物语官方中文维基",
+    "difficulty": "中等"
+  },
+  {
+    "id": 10,
+    "question": "橡树是什么？",
+    "true_answer": "橡树是一种树，由橡子长成。使用树液采集器时每 7 天（若使用重型树液采集器则为 3 天）产出一个橡树树脂。橡树可使用斧头砍倒，砍倒后会掉落木材、树液，可能还会掉落橡子和硬木（如果玩家选择了伐木工人职业)。 橡树",
+    "true_sources": [
+      "橡树"
+    ],
+    "original_title": "橡树 - 星露谷物语官方中文维基",
+    "difficulty": "困难"
+  },
+  {
+    "id": 11,
+    "question": "木匠的商店在哪里？",
+    "true_answer": "木匠的商店位于鹈鹕镇以北的深山地区。罗宾是镇上的木匠，经营着木匠铺，这里也是她与德米特里厄斯、玛鲁和塞巴斯蒂安居住的家。 木匠的商店",
+    "true_sources": [
+      "木匠的商店"
+    ],
+    "original_title": "木匠的商店 - 星露谷物语官方中文维基",
+    "difficulty": "困难"
+  },
+  {
+    "id": 12,
+    "question": "怎么获得鱼籽？",
+    "true_answer": "鱼籽是饲养于鱼塘中的鱼产下的卵。在玩家阅读海之宝石后，也可以从钓鱼宝箱中开出（25%概率）&#91;1&#93;。 鱼籽 新鲜的鱼卵。可以把它们在一个罐头瓶中腌制，从而产生特殊风味。 信息 来源 鱼塘 季节 任意季节 能量 / 生命值",
+    "true_sources": [
+      "鱼籽"
+    ],
+    "original_title": "鱼籽 - 星露谷物语官方中文维基",
+    "difficulty": "中等"
+  },
+  {
+    "id": 13,
+    "question": "鱼饵有什么用？",
+    "true_answer": "鱼饵可以放置在玻璃纤维鱼竿、铱金鱼竿、高级铱金鱼竿中，或投入蟹笼。鱼竿并非必须使用鱼饵，但使用鱼饵可使鱼更快上钩。特殊的鱼饵能提供特殊效果。蟹笼需要放入鱼饵才能捕捉到鱼 （除非玩家拥有诱饵大师职业），但鱼饵的种类不影响蟹笼收获。鱼饵总是一次性物品。1.6.3版本更新后鱼饵的种类会影响蟹笼收获。 本页面是介绍物品类别的。 关于具体物品，请见 “ 鱼饵（物品） ”。",
+    "true_sources": [
+      "鱼饵"
+    ],
+    "original_title": "鱼饵 - Stardew Valley Wiki",
+    "difficulty": "简单"
+  },
+  {
+    "id": 14,
+    "question": "有关钓鱼你能告诉我什么？",
+    "true_answer": "钓鱼是一种使用钓鱼竿或蟹笼捕捉鱼的技能。 页面仍需完善 该页面由于下列原因被标记为不完善： 参考、历史的翻译仍需要校对、润色 目录",
+    "true_sources": [
+      "钓鱼"
+    ],
+    "original_title": "钓鱼 - Stardew Valley Wiki",
+    "difficulty": "中等"
+  },
+  {
+    "id": 15,
+    "question": "电话有什么用？",
+    "true_answer": "玩家可通过电话查询商店的营业时间和库存&#91;1&#93;。电话可在木匠的商店中购买，价格为2,000金。电话的放置没有任何的限制。 电话 可以用来了解商店的营业时间和库存。 信息 来源 木匠的商店 ： 2,000金 售出价格 不可出售",
+    "true_sources": [
+      "电话"
+    ],
+    "original_title": "电话 - 星露谷物语官方中文维基",
+    "difficulty": "困难"
+  },
+  {
+    "id": 16,
+    "question": "幽灵头骨（危险）是什么？",
+    "true_answer": "幽灵头骨（危险）是一种可以在挑战之神庙（即完成了齐先生的核桃房中的“深处的危险”这一任务后到达矿井的120层开启）中发现的飞行类敌人。若在沙漠节期间激活了卡利科三花雕像的特定效果，则幽灵头骨（危险）也有概率生成于骷髅洞穴。 幽灵头骨（危险）",
+    "true_sources": [
+      "幽灵头骨（危险）"
+    ],
+    "original_title": "幽灵头骨（危险） - 星露谷物语官方中文维基",
+    "difficulty": "中等"
+  },
+  {
+    "id": 17,
+    "question": "边远森林在哪里？",
+    "true_answer": "边远森林是星露谷西北部的一个郊区。它包含了两个在修建捷径之前互不相连的区域。海拔较高的区域包含着一条“L”形的弯曲小径，连接着农场和深山。 海拔较低的部分（地图中用蓝色方框圈出的部分），只能从巴士站沿着公路往西走才能进入，并可通往隧道。",
+    "true_sources": [
+      "边远森林"
+    ],
+    "original_title": "边远森林 - Stardew Valley Wiki",
+    "difficulty": "简单"
+  },
+  {
+    "id": 18,
+    "question": "橙子树是什么？",
+    "true_answer": "橙子树是一种果树，由橙子树苗生长28天成熟。成熟的橙子树在星露谷农场的夏季每天都会产出一个橙子，种植在温室和姜岛中时全年结果。 橙子树",
+    "true_sources": [
+      "橙子树"
+    ],
+    "original_title": "橙子树 - 星露谷物语官方中文维基",
+    "difficulty": "困难"
+  },
+  {
+    "id": 19,
+    "question": "废弃的屋子在哪里？",
+    "true_answer": "废弃的屋子位于煤矿森林南部。取得第一个成就后，一只老鼠接管了这座建筑物，并开了一家店铺，向玩家出售帽子。 废弃的屋子",
+    "true_sources": [
+      "废弃的屋子"
+    ],
+    "original_title": "废弃的屋子 - 星露谷物语官方中文维基",
+    "difficulty": "中等"
+  },
+  {
+    "id": 20,
+    "question": "普通蘑菇在哪可以找到？",
+    "true_answer": "普通蘑菇是一种在秋季遍布星露谷的蘑菇，可通过采集获得。春季和秋季的秘密森林，夏季和秋季的森林农场以及姜岛蘑菇洞都可以找到它们。在秋季翻动垃圾桶也有概率找到。普通蘑菇也可以使用秋季种子种出。如果你选择的是蘑菇洞穴，可以在山洞的蘑菇箱中收获。在蘑菇树上放置树液采集器也可以获得普通蘑菇。它们也可以由蘑菇树桩产出。 普通蘑菇 稍微坚硬，肉质滑。 信息 来源 采集 • 秋季种子 • 山洞 • 蘑菇树 • 蘑菇树桩 地点 星露谷，包括 秘密森林 季节 春季 / 秋季 经验值 采集：7 采集经验值 秋季种子：7 采集经验值 山洞：5 采集经验值 蘑菇树：0 能量 / 生命值",
+    "true_sources": [
+      "普通蘑菇"
+    ],
+    "original_title": "普通蘑菇 - 星露谷物语官方中文维基",
+    "difficulty": "中等"
+  },
+  {
+    "id": 21,
+    "question": "苍蝇（危险）是什么？",
+    "true_answer": "苍蝇（危险）是敌人的一种，玩家可以在开启挑战之神庙后或在“深处的危险”任务中遇到该敌人。探险家公会消灭怪物的目标需要杀死80只“山洞昆虫”，苍蝇（危险）包含在其中。 苍蝇（危险）",
+    "true_sources": [
+      "苍蝇（危险）"
+    ],
+    "original_title": "苍蝇（危险） - 星露谷物语官方中文维基",
+    "difficulty": "困难"
+  },
+  {
+    "id": 22,
+    "question": "File:Spinner.png是什么？",
+    "true_answer": "Spinner.png &#8206;（48 × 48像素，文件大小：418字节，MIME类型：image/png） 文件 文件历史 文件用途 元数据 没有更高的分辨率。",
+    "true_sources": [
+      "File:Spinner.png"
+    ],
+    "original_title": "File:Spinner.png - Stardew Valley Wiki",
+    "difficulty": "困难"
+  },
+  {
+    "id": 23,
+    "question": "蓝爵是什么？",
+    "true_answer": "蓝爵是一种花类农作物，由蓝爵士种子经过7天的时间长成。 蓝爵 这种花朵为圆球状，以便吸引更多的蝴蝶而来。 信息 种子 蓝爵士种子 成熟需 7天 季节 春季 经验值 10 耕种经验值 能量 / 生命值",
+    "true_sources": [
+      "蓝爵"
+    ],
+    "original_title": "蓝爵 - 星露谷物语官方中文维基",
+    "difficulty": "中等"
+  },
+  {
+    "id": 24,
+    "question": "奶酪怎么获得？",
+    "true_answer": "奶酪是一种用压酪机制作的工匠物品。制作需要3.3小时。用牛奶会产出普通奶酪, 用大壶牛奶会产出金星品质的奶酪。周五，可以在沙漠商人处用一个绿宝石换一个奶酪。宠物猫达到最大好感度后，每天第一次被抚摸也有可能掉落一个奶酪。 该页面描述的是 牛 的动物产品对应的工匠物品。关于 山羊 的动物产品对应的工匠物品，另见： 山羊奶酪 奶酪 你的普通的奶酪。 信息 来源 工匠物品 • 沙漠商人 能量 / 生命值",
+    "true_sources": [
+      "奶酪"
+    ],
+    "original_title": "奶酪 - 星露谷物语官方中文维基",
+    "difficulty": "中等"
+  },
+  {
+    "id": 25,
+    "question": "熔岩潜伏怪是什么？",
+    "true_answer": "熔岩潜伏怪是火山地牢里面的敌人。 熔岩潜伏怪",
+    "true_sources": [
+      "熔岩潜伏怪"
+    ],
+    "original_title": "熔岩潜伏怪 - 星露谷物语官方中文维基",
+    "difficulty": "简单"
+  },
+  {
+    "id": 26,
+    "question": "鞋类有什么用？",
+    "true_answer": "鞋类是在游戏中可穿戴的物品，它们会增加玩家的防御和/或免疫。鞋类有多种获得途径。所有的鞋类可以在探险家公会出售。 鞋类 是在 游戏 中可穿戴的物品，它们会增加玩家的 防御 和/或 免疫 。鞋类有多种获得途径。所有的鞋类可以在 探险家公会 出售。 图片 名称 描述 加成 来源 购买价格 出售价格",
+    "true_sources": [
+      "鞋类"
+    ],
+    "original_title": "鞋类 - Stardew Valley Wiki",
+    "difficulty": "困难"
+  },
+  {
+    "id": 27,
+    "question": "铱锭是什么？",
+    "true_answer": "铱锭是一种金属，主要通过在熔炉中熔炼5份.mw-parser-output .nametemplate{margin:2px 5px 1px 2px;display:block;white-space:nowrap}.mw-parser-output .nametemplateinline{margin:2px 0 1px 2px;display:inline;white-space:nowrap}.mw-parser-output .nametemplate img,.mw-parser-output .nametemplateinline img{max-width:none} 铱矿石和1份.mw-parser-output .nametemplate{margin:2px 5px 1px 2px;display:block;white-space:nowrap}.mw-parser-output .nametemplateinline{margin:2px 0 1px 2px;display:inline;white-space:nowrap}.mw-parser-output .nametemplate img,.mw-parser-output .nametemplateinline img{max-width:none} 煤炭获得。铱锭也可以通过其他多种途径获得。 铱锭 一条纯铱锭。 信息 来源 熔炉 金色钓鱼宝箱 暗影狂徒 （0.2%） 暗影萨满 （0.2%） 铱蝠 （0.8%） 紫色史莱姆 （0.8%） 铱石魔 （3%，判定两次） 无尽财富之雕像 兑奖机 售出价格 基础售价 铁匠 （+50%）",
+    "true_sources": [
+      "铱锭"
+    ],
+    "original_title": "铱锭 - 星露谷物语官方中文维基",
+    "difficulty": "简单"
+  },
+  {
+    "id": 28,
+    "question": "File:StatusWedding.png是什么？",
+    "true_answer": "StatusWedding.png &#8206;（42 × 30像素，文件大小：309字节，MIME类型：image/png） 文件 文件历史 文件用途 元数据 没有更高的分辨率。",
+    "true_sources": [
+      "File:StatusWedding.png"
+    ],
+    "original_title": "File:StatusWedding.png - Stardew Valley Wiki",
+    "difficulty": "简单"
+  },
+  {
+    "id": 29,
+    "question": "铁砧有什么用？",
+    "true_answer": "铁砧是一种允许玩家重铸饰品属性的设备，蜥怪的爪子或魔法发胶无法重铸。在领取战斗精通后可以进行打造。 铁砧 可以“重新锻造”饰品。每次使用消耗 3 块铱锭。 信息 来源 打造 售出价格 不可出售 打造 配方来源 战斗精通 所需材料 铁锭 （50）",
+    "true_sources": [
+      "铁砧"
+    ],
+    "original_title": "铁砧 - 星露谷物语官方中文维基",
+    "difficulty": "困难"
+  },
+  {
+    "id": 30,
+    "question": "怎么获得苹果？",
+    "true_answer": "苹果是一种水果，是由种植苹果树苗后经28天生长成熟结出的果实。苹果树在星露谷农场时只会在秋季结果，或者种植在温室或姜岛之中全年结果。 苹果 爽口的水果，可做果汁和醋。 信息 来源 苹果树 种子 苹果树苗 成熟需 28天 丰收季节 秋季 能量 / 生命值",
+    "true_sources": [
+      "苹果"
+    ],
+    "original_title": "苹果 - 星露谷物语官方中文维基",
+    "difficulty": "中等"
+  },
+  {
+    "id": 31,
+    "question": "雪山药是什么？",
+    "true_answer": "雪山药是一个只能在冬季获得的采集物品。自然生成的雪山药不会出现在地面上，而是深藏在雪泥之下，要获得雪山药，必须使用锄头进行挖掘（无法通过其他工具获取，甚至炸弹都不行）。 雪山药 这种小山药隐藏在雪地下。 信息 来源 采集 • 冬季种子 季节 冬季 经验值 锄地 ：0 收获 冬季种子 ：7 采集经验 能量 / 生命值",
+    "true_sources": [
+      "雪山药"
+    ],
+    "original_title": "雪山药 - 星露谷物语官方中文维基",
+    "difficulty": "简单"
+  },
+  {
+    "id": 32,
+    "question": "煤炭窑是什么？",
+    "true_answer": "煤炭窑是一种精炼设备，用于将木材转换为煤炭，其打造配方在达到 采集等级 2 后解锁。 煤炭窑 将 10 块木头转换成一块煤炭。 信息 来源 打造 • 建筑收集包 售出价格 不可出售 打造 配方来源 采集 （2级） 所需材料 木材 （20） 铜锭 （2）",
+    "true_sources": [
+      "煤炭窑"
+    ],
+    "original_title": "煤炭窑 - 星露谷物语官方中文维基",
+    "difficulty": "中等"
+  },
+  {
+    "id": 33,
+    "question": "果酱和腌菜怎么获得？",
+    "true_answer": "果酱和腌菜可以分别通过放入一个水果或蔬菜进罐头瓶转化获得。单个果酱或腌菜的价格等于(2倍的基础农作物价格+ 50)。 关于罐头瓶利润的详细分析，请见 “ 罐头瓶生产力 ”。",
+    "true_sources": [
+      "果酱和腌菜"
+    ],
+    "original_title": "果酱和腌菜 - Stardew Valley Wiki",
+    "difficulty": "简单"
+  },
+  {
+    "id": 34,
+    "question": "有关战斗你能告诉我什么？",
+    "true_answer": "战斗是一种和与矿井、骷髅洞穴还有荒野农场中的怪物战斗相关的技能。 战斗 是一种和与 矿井 、 骷髅洞穴 还有 荒野农场 中的 怪物 战斗相关的 技能 。 在游戏开始的前几天，矿井会由于 Joja公司 的事故而处于关闭状态。在第5天左右，玩家将会收到一封来自Joja公司的信件，阐明由于山体滑坡导致的矿洞堵塞已经被清理完毕，并且矿井的入口已经可以进入。此时没有选择 荒野农场 的玩家可以进行战斗了。 战斗技能由击杀怪物来增加。每增加1级战斗等级都会得到1或多个 打造 蓝图或者 烹饪 食谱，并且增加玩家的HP（生命值）上限。 玩家击败一只怪物时经验等级会立刻增加，但是升级窗口会直到玩家睡觉后才出现（ 多人模式 则是所有玩家都睡觉后）。 目录",
+    "true_sources": [
+      "战斗"
+    ],
+    "original_title": "战斗 - Stardew Valley Wiki",
+    "difficulty": "简单"
+  },
+  {
+    "id": 35,
+    "question": "Category:季节是什么？",
+    "true_answer": "",
+    "true_sources": [
+      "Category:季节"
+    ],
+    "original_title": "Category:季节 - Stardew Valley Wiki",
+    "difficulty": "困难"
+  },
+  {
+    "id": 36,
+    "question": "高级鱼饵是什么？",
+    "true_answer": "高级鱼饵是一种鱼饵，可以使玩家在钓鱼时的绿条变长。达到 钓鱼等级4 后可以通过打造获得，同时解锁鱼店以100金出售。 高级鱼饵 使鱼更快咬钩，并且让“钓鱼条”更长。 信息 来源 鱼店 • 打造 • 钓鱼宝箱 • 高级虫饵盒 • 书摊老板 • 鳟鱼大赛 • 鱿鱼节 能量 不可食用 售出价格 1金 打造 配方来源 钓鱼 （4级） 所需材料 鱼饵 （5） 苔藓 （2） 产出 每份材料可制作5高级鱼饵",
+    "true_sources": [
+      "高级鱼饵"
+    ],
+    "original_title": "高级鱼饵 - 星露谷物语官方中文维基",
+    "difficulty": "简单"
+  },
+  {
+    "id": 37,
+    "question": "玛妮的牧场在哪？",
+    "true_answer": "玛妮的牧场位于煤矿森林的东北部，靠近鹈鹕镇的西南入口。牧场也是玛妮以及她的侄女贾斯和侄子谢恩的家。 玛妮的牧场",
+    "true_sources": [
+      "玛妮的牧场"
+    ],
+    "original_title": "玛妮的牧场 - 星露谷物语官方中文维基",
+    "difficulty": "困难"
+  },
+  {
+    "id": 38,
+    "question": "向日葵是什么？",
+    "true_answer": "向日葵是一种花类农作物，由向日葵种子生长8天后成熟。收获向日葵时会得到1朵向日葵和0-2份向日葵种子。 向日葵 一直被误会为向着太阳转动。 信息 种子 向日葵种子 成熟需 8天 季节 夏季 • 秋季 经验值 14 耕种经验值 能量 / 生命值",
+    "true_sources": [
+      "向日葵"
+    ],
+    "original_title": "向日葵 - 星露谷物语官方中文维基",
+    "difficulty": "困难"
+  },
+  {
+    "id": 39,
+    "question": "姜岛商人是谁？",
+    "true_answer": "姜岛商人是位于姜岛北部的蓝鸟商人。与沙漠商人类似，它不接受金币，只接受以物易物。 姜岛商人",
+    "true_sources": [
+      "姜岛商人"
+    ],
+    "original_title": "姜岛商人 - 星露谷物语官方中文维基",
+    "difficulty": "中等"
+  },
+  {
+    "id": 40,
+    "question": "新手指南是什么？",
+    "true_answer": "星露谷物语是一个开放式的游戏，让玩家角色通过各种方法达成成就。 在游戏中有多种方法来获得收入，而且还有很多可选择的活动，包括耕种、钓鱼、采集、采矿、战斗（击杀怪物）、制造、烹饪、友谊、完成任务以及重建社区中心。 新手指南 玩家角色 游戏设置 操作方式 移动端 操作方式 生命值 能量值 技能 游戏内时间",
+    "true_sources": [
+      "新手指南"
+    ],
+    "original_title": "新手指南 - Stardew Valley Wiki",
+    "difficulty": "简单"
+  },
+  {
+    "id": 41,
+    "question": "秋季种子是什么？",
+    "true_answer": "秋季种子是一种通过打造得到的种子。打造配方的名字是“野生种子（秋季）”，但得到的物品是“秋季种子”。作物成熟时，会随机变为黑莓、普通蘑菇、榛子和野梅。 秋季种子",
+    "true_sources": [
+      "秋季种子"
+    ],
+    "original_title": "秋季种子 - 星露谷物语官方中文维基",
+    "difficulty": "中等"
+  },
+  {
+    "id": 42,
+    "question": "File:StatusSnow.png是什么？",
+    "true_answer": "StatusSnow.png &#8206;（42 × 30像素，文件大小：342字节，MIME类型：image/png） 文件 文件历史 文件用途 元数据 没有更高的分辨率。",
+    "true_sources": [
+      "File:StatusSnow.png"
+    ],
+    "original_title": "File:StatusSnow.png - Stardew Valley Wiki",
+    "difficulty": "中等"
+  },
+  {
+    "id": 43,
+    "question": "织布机是什么？",
+    "true_answer": "织布机是一种用来制作工匠物品的工匠设备。它会把动物毛加工成布料。 织布机 将动物毛转换成美丽的布料。 信息 来源 打造 售出价格 不可出售 打造 配方来源 耕种 （7级） 所需材料 木材 （60） 纤维 （30） 松焦油 （1）",
+    "true_sources": [
+      "织布机"
+    ],
+    "original_title": "织布机 - 星露谷物语官方中文维基",
+    "difficulty": "困难"
+  },
+  {
+    "id": 44,
+    "question": "小麦是什么？",
+    "true_answer": "小麦是一种蔬菜类农作物。由小麦种子生长4天后成熟。小麦需要使用镰刀来收获，收割时可能会产出干草。 小麦 被广泛种植的谷物之一。能做成制作蛋糕和面包的上好面粉。 信息 种子 小麦种子 成熟需 4天 季节 夏季 • 秋季 经验值 6 耕种经验值 能量 不可食用 售出价格 基础售价 农耕人 （+10%）",
+    "true_sources": [
+      "小麦"
+    ],
+    "original_title": "小麦 - 星露谷物语官方中文维基",
+    "difficulty": "困难"
+  },
+  {
+    "id": 45,
+    "question": "顶级生长激素是什么？",
+    "true_answer": "顶级生长激素是一种肥料，可以促进作物生长速度加快 33%（在有农业学家技能时共加速 43%）&#91;1&#93;。可以在齐先生的核桃房花费30颗 .mw-parser-output .nametemplate{margin:2px 5px 1px 2px;display:block;white-space:nowrap}.mw-parser-output .nametemplateinline{margin:2px 0 1px 2px;display:inline;white-space:nowrap}.mw-parser-output .nametemplate img,.mw-parser-output .nametemplateinline img{max-width:none} 齐钻 购买配方后打造。 顶级生长激素",
+    "true_sources": [
+      "顶级生长激素"
+    ],
+    "original_title": "顶级生长激素 - 星露谷物语官方中文维基",
+    "difficulty": "中等"
+  },
+  {
+    "id": 46,
+    "question": "冬季种子是什么？",
+    "true_answer": "冬季种子是一种通过打造得到的种子。打造配方的名字是“野生种子（冬季）”，但得到的物品是“冬季种子”。作物成熟时，会随机变为番红花、水晶果、雪山药和冬根。 冬季种子",
+    "true_sources": [
+      "冬季种子"
+    ],
+    "original_title": "冬季种子 - 星露谷物语官方中文维基",
+    "difficulty": "简单"
+  },
+  {
+    "id": 47,
+    "question": "高级肥料是什么？",
+    "true_answer": "高级肥料是一种可以用于培育高品质作物的肥料。高级肥料可以经打造或第二年开始后在皮埃尔的杂货店花费150金购买。高级肥料在任意年份都有可能会出现在旅行货车的售卖货物中，售价data-sort-value=\"10\"100 ~ 1,000金。完成金库的 5,000金收集包可以获得 30 个高级肥料作为奖励。打开谜之盒或金色谜之盒有概率获得10个或20个高级肥料。 高级肥料",
+    "true_sources": [
+      "高级肥料"
+    ],
+    "original_title": "高级肥料 - 星露谷物语官方中文维基",
+    "difficulty": "中等"
+  },
+  {
+    "id": 48,
+    "question": "铜矿石是什么？",
+    "true_answer": "铜矿石可以通过使用十字镐开采铜矿获得。每开采一块铜矿会获得1~3个铜矿石，选择了“矿工”职业时会产出更多。 铜矿石 一种常见的矿石，能被熔炼成铜锭。 信息 来源 矿井 • 铁匠铺 • 钓鱼 • 远古斑点 • 晶球 • 淘金 • 旅行货车 售出价格 5金",
+    "true_sources": [
+      "铜矿石"
+    ],
+    "original_title": "铜矿石 - 星露谷物语官方中文维基",
+    "difficulty": "简单"
+  },
+  {
+    "id": 49,
+    "question": "File:StatusRain.png是什么？",
+    "true_answer": "StatusRain.png &#8206;（42 × 30像素，文件大小：380字节，MIME类型：image/png） 文件 文件历史 文件用途 元数据 没有更高的分辨率。",
+    "true_sources": [
+      "File:StatusRain.png"
+    ],
+    "original_title": "File:StatusRain.png - Stardew Valley Wiki",
+    "difficulty": "困难"
+  },
+  {
+    "id": 50,
+    "question": "仙人掌果子是什么？",
+    "true_answer": "仙人掌果子是一种可以在卡利科沙漠通过采集获得的水果。也可以在周二到绿洲以150金的价格购买，或是随机在旅行货车以data-sort-value=\"75\"225 ~ 1,000金的价格购买。解锁沙漠后，翻动任何垃圾桶也有概率找到。无尽财富之雕像会在山姆生日时（夏17日）生产一个普通品质的仙人掌果子。 仙人掌果子 尖刺仙人掌的甜美果实。 信息 来源 采集 • 仙人掌种子 • 绿洲 • 旅行货车 成熟需 12天 季节 任意季节 经验值 采集 ：7 采集 经验 仙人掌种子 ：14 耕种 经验 绿洲 ：不适用 能量 / 生命值",
+    "true_sources": [
+      "仙人掌果子"
+    ],
+    "original_title": "仙人掌果子 - 星露谷物语官方中文维基",
+    "difficulty": "简单"
+  }
+]

@@ -23,23 +23,13 @@ class RAGEvaluator:
         self.base_path = base_path
         self.evaluation_set = []
         self.evaluation_set_creator = EvaluationSetCreator(base_path)
-        
-        # 如果强制创建或评估集不存在，则创建评估集
-        if force_create_eval_set or not self.evaluation_set_exists():
-            self.create_evaluation_set()
-        else:
-            self.load_evaluation_set()
+        self.load_evaluation_set()
     
     def evaluation_set_exists(self) -> bool:
         """检查评估集是否存在"""
         eval_path = os.path.join(self.base_path, "evaluation_set.json")
         return os.path.exists(eval_path)
     
-    def create_evaluation_set(self, num_items: int = 50) -> List[Dict]:
-        """创建评估集"""
-        logger.info("创建评估集...")
-        self.evaluation_set = self.evaluation_set_creator.create_evaluation_set(num_items)
-        return self.evaluation_set
     
     def load_evaluation_set(self) -> List[Dict]:
         """加载评估集"""
@@ -229,7 +219,7 @@ class RAGEvaluator:
 
                 # 计算相似度指标
                 faithfulness = self.calculate_faithfulness(generated_answer, chunks)
-                relevance = self.calculate_relevance(generated_answer, question)
+                relevance = self.calculate_relevance(generated_answer, true_sources)
                 completeness = self.calculate_completeness(generated_answer, true_answer)
                 f1_score = self.calculate_f1_score(generated_answer, true_answer)
 
@@ -273,88 +263,48 @@ class RAGEvaluator:
         title_mentions = sum(1 for title in clean_chunk_titles if title in answer)
         return title_mentions / len(clean_chunk_titles) if clean_chunk_titles else 0
     
-    def calculate_relevance(self, answer: str, question: str) -> float:
-        """计算答案相关性 - 针对'XX是什么？'格式优化"""
-        if not answer or not question:
+    def calculate_relevance(self, answer: str, true_sources: List[str]) -> float:
+        """计算答案相关性 - 基于true_sources中的关键词"""
+        if not answer or not true_sources:
             return 0.0
         
-        # 提取问题中的实体（XX部分）
-        if question.endswith("是什么？"):
-            entity = question[:-4]  # 去掉"是什么？"部分
-        elif question.endswith("是什么"):
-            entity = question[:-3]  # 去掉"是什么"部分
-        else:
-            # 如果不是标准格式，使用备选方法
-            return self.calculate_relevance_fallback(answer, question)
+        # 清理true_sources中的关键词（移除wiki后缀等）
+        clean_keywords = []
+        for source in true_sources:
+            # 移除" - 星露谷物语官方中文维基"等后缀
+            if " - " in source:
+                keyword = source.split(" - ")[0]
+            else:
+                keyword = source
+            clean_keywords.append(keyword)
         
-        # 如果实体为空，返回默认值
-        if not entity:
-            return 0.5
-        
-        # 检查答案中是否包含实体
-        # 使用更宽松的匹配方式
-        if entity in answer:
-            return 1.0
-        
-        # 尝试部分匹配
-        # 如果实体较长，检查是否包含实体的主要部分
-        if len(entity) > 2:
-            # 尝试匹配实体的前2/3部分
-            partial_entity = entity[:int(len(entity)*2/3)]
-            if partial_entity in answer:
-                return 0.8
-            
-            # 尝试匹配实体的前1/2部分
-            partial_entity = entity[:int(len(entity)*1/2)]
-            if partial_entity in answer:
-                return 0.6
-        
-        # 如果完全匹配失败，尝试分词匹配
-        entity_words = [word for word in entity.split() if len(word) > 1]
-        if entity_words:
-            matched_words = sum(1 for word in entity_words if word in answer)
-            if matched_words > 0:
-                return min(0.3 + 0.7 * (matched_words / len(entity_words)), 1.0)
-        
-        # 完全没有匹配
-        return 0.0
-    
-    def calculate_relevance_fallback(self, answer: str, question: str) -> float:
-        """备用的相关性计算方法（用于非标准格式问题）"""
-        if not answer or not question:
-            return 0.0
-        
-        # 中文停用词列表
-        stop_words = {
-            "什么", "如何", "关于", "的", "是", "有", "吗", "呢", "了", "在", "和", "与", "或", 
-            "这", "那", "哪些", "怎么", "为什么", "能否", "可以", "请", "告诉", "解释", "描述",
-            "什么", "怎样", "哪个", "哪里", "何时", "谁", "多少", "多", "很", "非常", "特别",
-            "一个", "一种", "一些", "一点", "一下", "一次", "一样", "一般", "一直", "一定"
-        }
-        
-        # 清理问题文本
-        import re
-        cleaned_question = re.sub(r'[？?！!，。；;：:""''()（）【】\[\]]', ' ', question)
-        
-        # 提取问题中的关键词
-        question_words = [
-            word for word in cleaned_question.split() 
-            if (word and 
-                len(word) > 1 and
-                word not in stop_words)
-        ]
-        
-        # 如果没有有效关键词，返回默认值
-        if not question_words:
-            return 0.5
-        
-        # 检查答案中是否包含问题关键词
+        # 计算匹配的关键词数量
         matched_keywords = 0
-        for word in question_words:
-            if word in answer:
+        for keyword in clean_keywords:
+            # 使用更宽松的匹配方式，允许部分匹配
+            if keyword in answer:
                 matched_keywords += 1
+            else:
+                # 如果完整匹配失败，尝试部分匹配（对于较长的关键词）
+                if len(keyword) > 2:
+                    # 尝试匹配关键词的前2/3部分
+                    partial_keyword = keyword[:int(len(keyword)*2/3)]
+                    if partial_keyword in answer:
+                        matched_keywords += 0.7  # 部分匹配给部分分数
+                    else:
+                        # 尝试匹配关键词的前1/2部分
+                        partial_keyword = keyword[:int(len(keyword)*1/2)]
+                        if partial_keyword in answer:
+                            matched_keywords += 0.5
         
-        return matched_keywords / len(question_words)
+        # 计算相关性分数
+        if not clean_keywords:
+            return 0.0
+        
+        relevance_score = matched_keywords / len(clean_keywords)
+        return min(relevance_score, 1.0)  # 确保不超过1.0
+
+
     
     def calculate_completeness(self, generated_answer: str, true_answer: str) -> float:
         """计算答案完整性"""

@@ -120,7 +120,7 @@ class EvaluationSetCreator:
         
         return evaluation_item
     
-    def create_evaluation_set(self, num_items: int = 50) -> List[Dict]:
+    def create_evaluation_set(self, num_items: int = 60) -> List[Dict]:
         """
         从原始数据中随机选择条目创建评估集
         
