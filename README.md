@@ -5,6 +5,7 @@
 ## 功能特性
 - JSON/JSONL 数据流式加载与分块（支持自定义块大小与重叠）
 - 支持密集检索（FAISS + sentence-transformers 嵌入）与稀疏检索（BM25）
+- 可选查询改写：Condense / HyDE（使用 LLM 先改写或生成假设文档再检索）
 - 可切换的提示模板（标准、详细、星露谷专用、极简）
 - OpenAI 兼容接口的答案生成
 - 自动构建评估集与完整的检索/生成质量评估
@@ -46,7 +47,7 @@
 
 1) **分块并生成嵌入、索引 + 简单查询**
    ```bash
-   PYTHONPATH=src OPENAI_API_KEY=your_key \
+   PYTHONPATH=.:src OPENAI_API_KEY=your_key \
    python src/rag_system.py
    ```
    脚本会：
@@ -58,7 +59,7 @@
 
 2) **独立运行评估**
    ```bash
-   PYTHONPATH=src OPENAI_API_KEY=your_key \
+   PYTHONPATH=.:src OPENAI_API_KEY=your_key \
    python src/rag_evaluator.py
    ```
    - 若 `data/evaluation_set.json` 不存在，会自动构建评估集
@@ -67,7 +68,7 @@
 
 3) **多配置对比实验**
    ```bash
-   PYTHONPATH=src OPENAI_API_KEY=your_key \
+   PYTHONPATH=.:src OPENAI_API_KEY=your_key \
    python src/comparison_experiment.py
    ```
    - 预置多组密集/稀疏检索与不同提示模板的组合
@@ -77,6 +78,7 @@
 - 嵌入模型：默认 `moka-ai/m3e-base`，可切换为 BAAI/bge 系列或英文模型
 - 检索方式：向量检索（`VectorRetriever` + FAISS）或 BM25 稀疏检索
 - 提示模板：`standard` / `detailed` / `stardew_specific` / `minimal`
+- 查询改写：`QUERY_REWRITE_MODE` 设为 `none` / `condense` / `hyde`，可选 `QUERY_REWRITE_MODEL` 覆盖重写所用模型
 - 关键路径：在各脚本顶部的 `BASE`、`*_PATH` 与模型名称可按需修改
 - API 配置：`OPENAI_API_KEY` 与 `base_url` 建议通过环境变量或启动参数传入
 

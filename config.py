@@ -51,6 +51,8 @@ class ModelConfig:
     prompt_type: str = field(default_factory=lambda: os.getenv("PROMPT_TYPE", "standard"))
     openai_api_key: Optional[str] = field(default_factory=lambda: os.getenv("OPENAI_API_KEY"))
     openai_base_url: str = field(default_factory=lambda: os.getenv("OPENAI_BASE_URL", "https://bj.yi-zhan.top/v1"))
+    query_rewrite_mode: str = field(default_factory=lambda: os.getenv("QUERY_REWRITE_MODE", "none"))  # none | condense | hyde
+    query_rewrite_model: Optional[str] = field(default_factory=lambda: os.getenv("QUERY_REWRITE_MODEL"))  # fallback to llm_model
 
 
 @dataclass
