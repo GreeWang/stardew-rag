@@ -6,3 +6,4 @@ numpy
 jieba
 rank-bm25
 hf_xet
+openai

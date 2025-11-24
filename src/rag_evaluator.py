@@ -6,6 +6,7 @@ from typing import List, Dict
 import logging
 from datetime import datetime
 from pathlib import Path
+from config import load_config, DATA_DIR, EVAL_RESULTS_DIR
 
 # 导入必要的模块
 from embedder import ChunkEmbedder
@@ -19,11 +20,21 @@ logger = logging.getLogger(__name__)
 
 
 class RAGEvaluator:
-    def __init__(self, base_path: str = "data", force_create_eval_set: bool = False):
-        self.base_path = base_path
+    def __init__(self, base_path: str | Path = DATA_DIR, force_create_eval_set: bool = False):
+        self.base_path = str(base_path)
         self.evaluation_set = []
+<<<<<<< HEAD
         self.evaluation_set_creator = EvaluationSetCreator(base_path)
         self.load_evaluation_set()
+=======
+        self.evaluation_set_creator = EvaluationSetCreator(self.base_path)
+        
+        # 如果强制创建或评估集不存在，则创建评估集
+        if force_create_eval_set or not self.evaluation_set_exists():
+            self.create_evaluation_set()
+        else:
+            self.load_evaluation_set()
+>>>>>>> 088a3eacacf40c157de4fb40f9e4e82a363a4913
     
     def evaluation_set_exists(self) -> bool:
         """检查评估集是否存在"""
@@ -322,7 +333,7 @@ class RAGEvaluator:
         ratio = min(gen_len / true_len, 1.0)
         return ratio
     
-    def run_complete_evaluation(self, rag_system, output_dir: str = "evaluation_results"):
+    def run_complete_evaluation(self, rag_system, output_dir: str = str(EVAL_RESULTS_DIR)):
         """
         运行完整的评估流程
         """
@@ -430,8 +441,10 @@ RAG系统评估报告
 
 def main():
     """主函数 - 运行评估"""
+    paths, models, pipeline = load_config()
+
     # 初始化评估器
-    evaluator = RAGEvaluator(force_create_eval_set=False)
+    evaluator = RAGEvaluator(base_path=paths.base_dir if hasattr(paths, "base_dir") else paths.raw_docs.parent, force_create_eval_set=False)
     
     print(f"已加载包含 {len(evaluator.evaluation_set)} 个问题的评估集")
     
@@ -439,22 +452,15 @@ def main():
     print("初始化RAG系统...")
     from rag_system import RAGSystem
     
-    # RAG系统配置
-    BASE = "data"
-    EMBED_MODEL = "moka-ai/m3e-base"
-    LLM_MODEL = "gpt-4-turbo"
-    API_KEY = "sk-tT5HcopxjJ7vGdnX4333Ef20D1E44eB7827b98D4A923F9E2"
-    BASE_URL = "https://bj.yi-zhan.top/v1"
-    
     try:
         rag_system = RAGSystem(
-            embeddings_path=f"{BASE}\\embeddings.npy",
-            metadata_path=f"{BASE}\\chunk_metadata.jsonl",
-            index_path=f"{BASE}\\faiss_index.bin",
-            model_name=EMBED_MODEL,
-            llm_model_name=LLM_MODEL,
-            api_key=API_KEY,
-            base_url=BASE_URL
+            embeddings_path=str(paths.embeddings),
+            metadata_path=str(paths.chunk_metadata),
+            index_path=str(paths.faiss_index),
+            model_name=models.embed_model,
+            llm_model_name=models.llm_model,
+            api_key=models.openai_api_key,
+            base_url=models.openai_base_url
         )
     except Exception as e:
         print(f"初始化RAG系统失败: {e}")
