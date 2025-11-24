@@ -1,11 +1,11 @@
 import logging
-import os
 from pathlib import Path
 from data_loader import load_and_parse_jsonl
 from processor import process_and_save_chunks
 from embedder import ChunkEmbedder
 from retriever import VectorRetriever
 from generator import RAGGenerator
+from config import load_config
 
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -59,26 +59,22 @@ class RAGSystem:
 
 
 if __name__ == "__main__":
-    # === 路径 ===
-    BASE = "data"
+    paths, models, pipeline = load_config()
 
-    INPUT_JSON_PATH = f"{BASE}\\rag_docs.json"
-    CHUNKS_PATH = f"{BASE}\\chunks.jsonl"
-    METADATA_PATH = f"{BASE}\\chunk_metadata.jsonl"
-    EMBEDDINGS_PATH = f"{BASE}\\embeddings.npy"
-    INDEX_PATH = f"{BASE}\\faiss_index.bin"
+    INPUT_JSON_PATH = paths.raw_docs
+    CHUNKS_PATH = paths.chunks
+    METADATA_PATH = paths.chunk_metadata
+    EMBEDDINGS_PATH = paths.embeddings
+    INDEX_PATH = paths.faiss_index
 
-    # === 模型名称 ===
-    EMBED_MODEL = "moka-ai/m3e-base"
-    LLM_MODEL = "gpt-4-turbo"
-
-    # === API ===
-    API_KEY = "sk-tT5HcopxjJ7vGdnX4333Ef20D1E44eB7827b98D4A923F9E2"
-    BASE_URL = "https://bj.yi-zhan.top/v1"
+    EMBED_MODEL = models.embed_model
+    LLM_MODEL = models.llm_model
+    API_KEY = models.openai_api_key
+    BASE_URL = models.openai_base_url
 
     # === Step 1: 打印前 5 条原文（可选） ===
     print("开始加载 JSON 数据...")
-    for i, (title, content) in enumerate(load_and_parse_jsonl(INPUT_JSON_PATH), start=1):
+    for i, (title, content) in enumerate(load_and_parse_jsonl(str(INPUT_JSON_PATH)), start=1):
         print(f"\n--- 第{i}条 ---")
         print("标题:", title)
         print("内容预览:", content[:200])
@@ -88,26 +84,26 @@ if __name__ == "__main__":
     # === Step 2: 分块 ===
     print("\n开始分块...")
     process_and_save_chunks(
-        input_file_path=INPUT_JSON_PATH,
-        output_file_path=CHUNKS_PATH,
-        chunk_size=1024,
-        overlap=50
+        input_file_path=str(INPUT_JSON_PATH),
+        output_file_path=str(CHUNKS_PATH),
+        chunk_size=pipeline.chunk_size,
+        overlap=pipeline.chunk_overlap
     )
 
     # === Step 3: 生成嵌入 ===
     print("\n开始生成嵌入...")
     embedder = ChunkEmbedder(model_name=EMBED_MODEL)
     embedder.embed_chunks(
-        chunks_file_path=CHUNKS_PATH,
-        output_embeddings_path=EMBEDDINGS_PATH,
-        output_metadata_path=METADATA_PATH
+        chunks_file_path=str(CHUNKS_PATH),
+        output_embeddings_path=str(EMBEDDINGS_PATH),
+        output_metadata_path=str(METADATA_PATH)
     )
 
     # === Step 4: 初始化完整 RAG ===
     rag = RAGSystem(
-        embeddings_path=EMBEDDINGS_PATH,
-        metadata_path=METADATA_PATH,
-        index_path=INDEX_PATH,
+        embeddings_path=str(EMBEDDINGS_PATH),
+        metadata_path=str(METADATA_PATH),
+        index_path=str(INDEX_PATH),
         model_name=EMBED_MODEL,
         llm_model_name=LLM_MODEL,
         api_key=API_KEY,
@@ -117,11 +113,11 @@ if __name__ == "__main__":
     # === Step 5: 测试查询 ===
     test1 = "枫糖浆是什么？"
     print(f"\n问题: {test1}")
-    print("回答:", rag.query(test1, top_k=3))
+    print("回答:", rag.query(test1, top_k=pipeline.top_k))
 
     test2 = "矿车怎么用？"
     print(f"\n问题: {test2}")
-    print("回答:", rag.query(test2, top_k=3))
+    print("回答:", rag.query(test2, top_k=pipeline.top_k))
 
     from interactive_interface import run_interactive_query
     run_interactive_query(rag)

@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import List, Dict
 import logging
 import shutil
+from config import load_config, COMPARISON_RESULTS_DIR
 
 # 导入必要的模块
 from embedder import ChunkEmbedder
@@ -20,8 +21,10 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 logger = logging.getLogger(__name__)
 
 class ComparisonExperiment:
-    def __init__(self, base_path: str = "data"):
-        self.base_path = base_path
+    def __init__(self, base_path: str | Path = None):
+        paths, models, pipeline = load_config()
+        self.base_path = Path(base_path) if base_path else paths.base_dir
+        self.models = models
         self.results = {}
         
     def ensure_directory_exists(self, path: str):
@@ -32,9 +35,9 @@ class ComparisonExperiment:
         """为指定模型生成嵌入文件"""
         # 生成模型特定的文件名
         model_safe_name = model_name.replace('/', '_')
-        embeddings_path = f"{self.base_path}\\embeddings_{model_safe_name}.npy"
-        metadata_path = f"{self.base_path}\\chunk_metadata_{model_safe_name}.jsonl"
-        index_path = f"{self.base_path}\\faiss_index_{model_safe_name}.bin"
+        embeddings_path = self.base_path / f"embeddings_{model_safe_name}.npy"
+        metadata_path = self.base_path / f"chunk_metadata_{model_safe_name}.jsonl"
+        index_path = self.base_path / f"faiss_index_{model_safe_name}.bin"
         
         # 检查是否已存在嵌入文件
         if os.path.exists(embeddings_path) and os.path.exists(metadata_path):
@@ -48,9 +51,9 @@ class ComparisonExperiment:
         
         # 生成嵌入
         embedder.embed_chunks(
-            chunks_file_path=f"{self.base_path}\\chunks.jsonl",
-            output_embeddings_path=embeddings_path,
-            output_metadata_path=metadata_path
+            chunks_file_path=str(self.base_path / "chunks.jsonl"),
+            output_embeddings_path=str(embeddings_path),
+            output_metadata_path=str(metadata_path)
         )
         
         logger.info(f"嵌入文件生成完成: {embeddings_path}")
@@ -61,22 +64,22 @@ class ComparisonExperiment:
         logger.info("初始化稀疏检索器 (BM25)...")
         
         # 使用m3e模型的元数据文件，确保文件存在
-        metadata_path = f"{self.base_path}\\chunk_metadata_moka-ai_m3e-base.jsonl"
+        metadata_path = self.base_path / "chunk_metadata_moka-ai_m3e-base.jsonl"
         
         # 如果文件不存在，尝试使用默认的元数据文件
-        if not os.path.exists(metadata_path):
+        if not metadata_path.exists():
             logger.warning(f"元数据文件 {metadata_path} 不存在，尝试使用默认元数据文件")
-            metadata_path = f"{self.base_path}\\chunk_metadata.jsonl"
+            metadata_path = self.base_path / "chunk_metadata.jsonl"
             
             # 如果默认文件也不存在，则生成一个
-            if not os.path.exists(metadata_path):
+            if not metadata_path.exists():
                 logger.error("找不到任何元数据文件，无法初始化稀疏检索器")
                 raise FileNotFoundError("找不到元数据文件")
         
         logger.info(f"使用元数据文件: {metadata_path}")
         
         # 初始化BM25检索器
-        retriever = BM25Retriever(metadata_path=metadata_path)
+        retriever = BM25Retriever(metadata_path=str(metadata_path))
         
         logger.info("稀疏检索器初始化完成")
         return retriever
@@ -114,9 +117,9 @@ class ComparisonExperiment:
         
         # 初始化生成器
         generator = RAGGenerator(
-            api_key="sk-tT5HcopxjJ7vGdnX4333Ef20D1E44eB7827b98D4A923F9E2",
-            model_name="gpt-4-turbo",
-            base_url="https://bj.yi-zhan.top/v1",
+            api_key=self.models.openai_api_key,
+            model_name=self.models.llm_model,
+            base_url=self.models.openai_base_url,
             prompt_type=config["prompt_type"]
         )
         
@@ -199,7 +202,7 @@ class ComparisonExperiment:
             
             try:
                 # 确保输出目录存在
-                output_dir = f"comparison_results/{config['name']}"
+                output_dir = COMPARISON_RESULTS_DIR / config["name"]
                 self.ensure_directory_exists(output_dir)
                 
                 # 初始化RAG系统
@@ -236,10 +239,10 @@ class ComparisonExperiment:
     
     def save_all_results(self):
         """保存所有实验结果"""
-        output_dir = "comparison_results"
+        output_dir = COMPARISON_RESULTS_DIR
         self.ensure_directory_exists(output_dir)
         
-        results_file = os.path.join(output_dir, f"all_experiment_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json")
+        results_file = output_dir / f"all_experiment_results_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
         with open(results_file, 'w', encoding='utf-8') as f:
             json.dump(self.results, f, ensure_ascii=False, indent=2)
         
@@ -258,10 +261,10 @@ class ComparisonExperiment:
         detailed_report = self._generate_detailed_report()
         
         # 保存报告
-        output_dir = "comparison_results"
+        output_dir = COMPARISON_RESULTS_DIR
         self.ensure_directory_exists(output_dir)
         
-        report_file = os.path.join(output_dir, "comparison_report.md")
+        report_file = output_dir / "comparison_report.md"
         
         with open(report_file, 'w', encoding='utf-8') as f:
             f.write("# RAG系统比较实验报告\n\n")
