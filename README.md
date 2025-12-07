@@ -1,5 +1,10 @@
 # Stardew Valley RAG Project
 
+## Team Members: 
+Guorun WANG (ID: 50012625), 
+Leyi SHENG (ID: 50013289), 
+Xuqiao MA (ID: 50013100)
+
 Retrieval-augmented generation (RAG) for Chinese Stardew Valley knowledge: data prep and chunking, dense/sparse retrieval, answer generation, evaluation, and configuration comparisons.
 
 ## Highlights
@@ -86,3 +91,14 @@ Centralized in `config.py`, overridable via env vars:
 - **API key hygiene**: the repo contains a demo key in `config.py`—always override via env vars before running or sharing code.
 
 Feel free to swap in your data, models, and prompts. If you already have embeddings and an index, you can plug them into `RAGSystem` to query or integrate elsewhere.***
+
+## Contributions
+
+Guorun WANG: Designed and implemented a fully functional, end-to-end RAG pipeline from scratch and exploration on Latency and Memory Profiling, arranged presentation, revised report.
+
+
+Leyi SHENG:Crawlled the data from stardew valley wiki, realized the function of query rewriting and add config and readme, finished whole report writing.
+
+
+Xuqiao MA: Designed a simple use interface. Evaluation set generation method and implemented evaluation and comparison experiments, revised report.
+
