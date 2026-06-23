@@ -37,11 +37,12 @@ def process_and_save_chunks(
         os.makedirs(output_dir)
         logger.info(f"创建输出目录: {output_dir}")
 
-    processed_count = 0
     total_chunks = 0
 
-    # 读取原始文档
-    documents = load_and_parse_jsonl(input_file_path)
+    documents = list(load_and_parse_jsonl(input_file_path))
+    if not documents:
+        logger.error("未加载到任何文档，分块终止。")
+        return
 
     # 分块
     chunks = chunk_documents(documents, chunk_size=chunk_size, overlap=overlap)

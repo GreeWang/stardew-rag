@@ -57,8 +57,12 @@ class ChunkEmbedder:
         logger.info(f"共加载 {len(titles)} 个块。")
 
         logger.info("开始生成嵌入向量...")
-        # 一次性生成所有文本的嵌入 (注意：如果文本量非常大，可能需要分批处理)
-        embeddings = self.model.encode(texts, show_progress_bar=True)
+        embeddings = self.model.encode(
+            texts,
+            show_progress_bar=True,
+            batch_size=32,
+            convert_to_numpy=True,
+        )
 
         logger.info(f"嵌入向量形状: {embeddings.shape}")
 

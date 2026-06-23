@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+.DS_Store
+.vscode/
+*.log
+
+# Generated artifacts (rebuild via pipeline scripts)
+data/embeddings*.npy
+data/faiss_index*.bin
+data/chunk_metadata*.jsonl
+
+# Evaluation outputs
+evaluation_results/

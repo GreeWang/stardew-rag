@@ -21,9 +21,9 @@ Retrieval-augmented generation (RAG) for Chinese Stardew Valley knowledge: data 
    ```bash
    pip install -r requirements.txt openai
    ```
-3) LLM access (override the demo key in `config.py` with env vars):
+3) LLM access (set via environment variables):
    - `OPENAI_API_KEY=your_key`
-   - optional: `OPENAI_BASE_URL=https://your-endpoint/v1`
+   - optional: `OPENAI_BASE_URL=https://your-endpoint/v1` (defaults to OpenAI)
 
 ## Data
 - Place source docs at `data/rag_docs.json` (JSON array or JSONL). Each record needs `title` and `text`, for example:
@@ -88,17 +88,7 @@ Centralized in `config.py`, overridable via env vars:
 - **ImportError / module not found**: prefix commands with `PYTHONPATH=.:src`, or mark `src` as source root in your IDE.
 - **Memory/time during embedding**: `embedder.embed_chunks` encodes all text at once; for large data, batch or reduce chunk size.
 - **Missing deps**: `pip install -r requirements.txt openai`; install a GPU build of `torch` if needed.
-- **API key hygiene**: the repo contains a demo key in `config.py`—always override via env vars before running or sharing code.
+- **API key hygiene**: never commit API keys; always set `OPENAI_API_KEY` via environment variables.
+- **Re-running the pipeline**: `rag_system.py` skips chunking/embedding if `data/chunks.jsonl` and `data/embeddings.npy` already exist.
 
-Feel free to swap in your data, models, and prompts. If you already have embeddings and an index, you can plug them into `RAGSystem` to query or integrate elsewhere.***
-
-## Contributions
-
-Guorun WANG: Designed and implemented a fully functional, end-to-end RAG pipeline from scratch and exploration on Latency and Memory Profiling, arranged presentation, revised report.
-
-
-Leyi SHENG:Crawlled the data from stardew valley wiki, realized the function of query rewriting and add config and readme, finished whole report writing.
-
-
-Xuqiao MA: Designed a simple use interface. Evaluation set generation method and implemented evaluation and comparison experiments, revised report.
-
+Feel free to swap in your data, models, and prompts. If you already have embeddings and an index, you can plug them into `RAGSystem` to query or integrate elsewhere.

@@ -25,7 +25,8 @@ class RAGSystem:
         api_key: str = None,
         base_url: str = None,
         query_rewrite_mode: str = "none",
-        query_rewrite_model: Optional[str] = None
+        query_rewrite_model: Optional[str] = None,
+        prompt_type: str = "standard",
     ):
         logger.info("正在初始化 RAG 系统...")
 
@@ -38,7 +39,12 @@ class RAGSystem:
         )
 
         logger.info("正在加载生成模型...")
-        self.generator = RAGGenerator(api_key=api_key, model_name=llm_model_name, base_url=base_url)
+        self.generator = RAGGenerator(
+            api_key=api_key,
+            model_name=llm_model_name,
+            base_url=base_url,
+            prompt_type=prompt_type,
+        )
 
         # Optional query rewriting / HyDE
         self.query_rewrite_mode = (query_rewrite_mode or "none").lower()
@@ -116,23 +122,29 @@ if __name__ == "__main__":
         if i >= 5:
             break
 
-    # === Step 2: 分块 ===
-    print("\n开始分块...")
-    process_and_save_chunks(
-        input_file_path=str(INPUT_JSON_PATH),
-        output_file_path=str(CHUNKS_PATH),
-        chunk_size=pipeline.chunk_size,
-        overlap=pipeline.chunk_overlap
-    )
+    # === Step 2: 分块（已有产物则跳过）===
+    if CHUNKS_PATH.exists():
+        print(f"\n分块文件已存在，跳过: {CHUNKS_PATH}")
+    else:
+        print("\n开始分块...")
+        process_and_save_chunks(
+            input_file_path=str(INPUT_JSON_PATH),
+            output_file_path=str(CHUNKS_PATH),
+            chunk_size=pipeline.chunk_size,
+            overlap=pipeline.chunk_overlap,
+        )
 
-    # === Step 3: 生成嵌入 ===
-    print("\n开始生成嵌入...")
-    embedder = ChunkEmbedder(model_name=EMBED_MODEL)
-    embedder.embed_chunks(
-        chunks_file_path=str(CHUNKS_PATH),
-        output_embeddings_path=str(EMBEDDINGS_PATH),
-        output_metadata_path=str(METADATA_PATH)
-    )
+    # === Step 3: 生成嵌入（已有产物则跳过）===
+    if EMBEDDINGS_PATH.exists() and METADATA_PATH.exists():
+        print(f"\n嵌入文件已存在，跳过: {EMBEDDINGS_PATH}")
+    else:
+        print("\n开始生成嵌入...")
+        embedder = ChunkEmbedder(model_name=EMBED_MODEL)
+        embedder.embed_chunks(
+            chunks_file_path=str(CHUNKS_PATH),
+            output_embeddings_path=str(EMBEDDINGS_PATH),
+            output_metadata_path=str(METADATA_PATH),
+        )
 
     # === Step 4: 初始化完整 RAG ===
     rag = RAGSystem(
@@ -144,7 +156,8 @@ if __name__ == "__main__":
         api_key=API_KEY,
         base_url=BASE_URL,
         query_rewrite_mode=models.query_rewrite_mode,
-        query_rewrite_model=models.query_rewrite_model or models.llm_model
+        query_rewrite_model=models.query_rewrite_model or models.llm_model,
+        prompt_type=models.prompt_type,
     )
 
     # === Step 5: 测试查询 ===

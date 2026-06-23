@@ -1,6 +1,7 @@
 # rag_evaluator.py
 import json
 import os
+import re
 import numpy as np
 from typing import List, Dict
 import logging
@@ -8,11 +9,7 @@ from datetime import datetime
 from pathlib import Path
 from config import load_config, DATA_DIR, EVAL_RESULTS_DIR
 
-# 导入必要的模块
-from embedder import ChunkEmbedder
-from retriever import VectorRetriever
-from generator import RAGGenerator
-from evaluation_set_creator import EvaluationSetCreator  # 直接引用评估集创建器
+from evaluation_set_creator import EvaluationSetCreator
 from sparse_retriever import BM25Retriever
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -23,19 +20,18 @@ class RAGEvaluator:
     def __init__(self, base_path: str | Path = DATA_DIR, force_create_eval_set: bool = False):
         self.base_path = str(base_path)
         self.evaluation_set = []
-<<<<<<< HEAD
-        self.evaluation_set_creator = EvaluationSetCreator(base_path)
-        self.load_evaluation_set()
-=======
         self.evaluation_set_creator = EvaluationSetCreator(self.base_path)
-        
-        # 如果强制创建或评估集不存在，则创建评估集
+
         if force_create_eval_set or not self.evaluation_set_exists():
             self.create_evaluation_set()
         else:
             self.load_evaluation_set()
->>>>>>> 088a3eacacf40c157de4fb40f9e4e82a363a4913
-    
+
+    def create_evaluation_set(self, num_items: int = 60) -> List[Dict]:
+        """从原始文档生成评估集。"""
+        self.evaluation_set = self.evaluation_set_creator.create_evaluation_set(num_items)
+        return self.evaluation_set
+
     def evaluation_set_exists(self) -> bool:
         """检查评估集是否存在"""
         eval_path = os.path.join(self.base_path, "evaluation_set.json")
@@ -73,7 +69,6 @@ class RAGEvaluator:
         ]
         
         for pattern in patterns_to_remove:
-            import re
             cleaned_text = re.sub(pattern, "", cleaned_text)
         
         # 清理多余的空格（但保留单个空格）

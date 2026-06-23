@@ -108,7 +108,7 @@ if __name__ == "__main__":
     INDEX_PATH = "C:\\Users\\Wong\\Desktop\\work\\stardew-rag-project\\data\\faiss_index.bin"
     EMBEDDING_MODEL_NAME = "moka-ai/m3e-base"
     LLM_MODEL_NAME = "gpt-3.5-turbo" # Or "llama3"
-    API_KEY = "sk-tT5HcopxjJ7vGdnX4333Ef20D1E44eB7827b98D4A923F9E2" # Or None if using Ollama
+    API_KEY = os.getenv("OPENAI_API_KEY")
 
     # Define configurations to test
     configs_to_test = [

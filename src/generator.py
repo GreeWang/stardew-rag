@@ -14,15 +14,17 @@ class RAGGenerator:
         self,
         api_key: str = None,
         model_name: str = "gpt-4",
-        base_url: str = "https://api.chsdw.top/v1",
-        prompt_type: str = "standard"  # 新增：提示模板类型
+        base_url: str = None,
+        prompt_type: str = "standard",
     ):
         if not api_key:
             api_key = os.getenv("OPENAI_API_KEY")
             if not api_key:
                 raise ValueError("必须提供 OpenAI API Key，或设置环境变量 OPENAI_API_KEY。")
 
-        # 使用你的自定义 API 地址
+        if not base_url:
+            base_url = os.getenv("OPENAI_BASE_URL", "https://api.openai.com/v1")
+
         self.client = OpenAI(api_key=api_key, base_url=base_url)
         self.model_name = model_name
         self.prompt_type = prompt_type  # 保存提示类型
